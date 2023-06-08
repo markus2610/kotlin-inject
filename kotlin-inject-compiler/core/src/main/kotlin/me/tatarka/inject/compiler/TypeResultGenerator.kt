@@ -324,13 +324,13 @@ data class TypeResultGenerator(val options: Options, val implicitAccessor: Acces
 
     private fun TypeResult.LateInit.generate(): CodeBlock {
         return CodeBlock.builder().apply {
-            beginControlFlow("run")
+            //beginControlFlow("run")
             addStatement("lateinit var %N: %T", name, result.key.type.toTypeName())
             add(result.generate())
             beginControlFlow(".also")
             addStatement("%N = it", name)
             endControlFlow()
-            endControlFlow()
+            //endControlFlow()
         }.build()
     }
 }
